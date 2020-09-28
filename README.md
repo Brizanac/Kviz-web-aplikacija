@@ -1,4 +1,4 @@
-# DWA
+# DWA klijent+folder posluzitelj
 
 ## Project setup
 ```
