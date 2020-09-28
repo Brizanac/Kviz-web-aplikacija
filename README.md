@@ -1,4 +1,4 @@
-# klijent
+# DWA
 
 ## Project setup
 ```
