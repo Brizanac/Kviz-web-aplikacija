@@ -128,7 +128,7 @@ export default {
   margin-left: 36px;
   text-align: center;
   position: absolute;
-  color: #e0115f;
+  color: #FF6347;
   font-size: 28px;
 
 }

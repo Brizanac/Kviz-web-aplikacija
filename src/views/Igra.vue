@@ -12,14 +12,14 @@
       </div>
 
       <div class="controls">
-          <button v-if="!gameStarted && !endGame" id="start-btn" @click="startGame" class="start-btn btn">Započni</button>
+          <button v-if="!gameStarted && !endGame" id="start-btn" @click="startGame" class="StartPovratak btn">Započni</button>
           <button v-if="gameStarted && !endGame" id="next-btn" @click="nextQuestion" class="next-btn btn hide">Dalje</button>
       </div>
       <div v-if="endGame">
       <h3>Igra je gotova!</h3>
       <p>Točnih odgovora: {{correctAnswers}}</p>
       <p>Netočnih odgovora: {{wrongAnswers}}</p>
-      <button><router-link to="/home" >Povratak na kategorije</router-link></button>
+      <button class="StartPovratak"><router-link to="/home" >Povratak na kategorije</router-link></button>
       </div>
   </div>
 </template>
@@ -93,11 +93,11 @@ export default {
     },
 
     countTime () {
-      if (this.sec === 0) {
+      if (this.sec == 0) {
         this.wrongAnswers++;
         this.nextQuestion();
         this.countReset();
-        if (this.questions.length >== 0)  this.countTime();
+        if (this.questions.length >= 0)  this.countTime();
       } else {
         setTimeout(() => {
           this.sec--;
@@ -134,4 +134,39 @@ export default {
   height: 10px;
   border-radius: 5px;
 }
+
+.StartPovratak {
+margin: 250px 0;
+width: 50%;
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+border-radius: 5px;
+padding: 5px 10px;
+outline: none;
+color: #9b111e;
+font-size: 20px;
+}
+
+.btn {
+  height: 150%;
+  width: 30%;
+  border-radius: 5px;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+#answer-buttons {
+  grid-template-columns: 100ch auto;
+  margin-left: 485px;
+}
+
+.btn-grid {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+}
+
 </style>
