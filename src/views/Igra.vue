@@ -39,6 +39,7 @@ export default {
       correctAnswers: 0 ,
       wrongAnswers: 0 ,
       endGame: false,
+      vrijeme: null,
 
       sec: 15,
       timeLineEl: ""
@@ -73,6 +74,7 @@ export default {
           this.wrongAnswers++;
       }
       this.questionDone = true;
+      clearTimeout(this.vrijeme);
     },
     nextQuestion () {
       if (this.questions.length > 0) {
@@ -86,20 +88,18 @@ export default {
         this.endGame = true;
         this.countReset();
       }
-
+        this.countTime();
     },
     randomList (rand) {
       return Math.floor(Math.random() * rand.length);
     },
 
     countTime () {
-      if (this.sec == 0) {
+      if (this.sec === 0) {
         this.wrongAnswers++;
-        this.nextQuestion();
-        this.countReset();
-        if (this.questions.length >= 0)  this.countTime();
+        this.questionDone = true;
       } else {
-        setTimeout(() => {
+        this.vrijeme = setTimeout(() => {
           this.sec--;
           let w = this.sec / 15 * 100;
           this.timeLineEl.style.width = w + "%";
